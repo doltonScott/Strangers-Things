@@ -1,0 +1,16 @@
+{
+  "location": "Ames, IA",
+  "willDeliver": true,
+  "messages": [],
+  "active": true,
+  "_id": "61aeaaf253f932001795b4d8",
+  "author": { "_id": "61aeaaf253f932001795b4d5", "username": "caesar1234" },
+  "cohort": "61aeaaf253f932001795b4d2",
+  "title": "NordicTrack Freestrider Elliptical Trainer",
+  "description": "To be honest, it is more amazing than my resolve.",
+  "price": "$1400, OBO",
+  "createdAt": "2021-12-07T00:29:38.508Z",
+  "updatedAt": "2021-12-07T00:29:38.691Z",
+  "__v": 0,
+  "isAuthor": false
+}

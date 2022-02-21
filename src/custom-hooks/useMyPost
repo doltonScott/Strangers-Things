@@ -1,0 +1,46 @@
+import { useState, useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { BASE_URL } from "../../constants";
+
+export function useMyPosts() {
+  const { me, selectedPost, setSelectedPost, updateMe, token } =
+    useContext(AuthContext);
+  let { posts } = me || {};
+  const [error, setError] = useState(null);
+
+  const removePost = async (postId) => {
+    const ok = confirm("Do you wish to continue?");
+
+    if (!ok) return;
+
+    try {
+      const response = await fetch(`${BASE_URL}/posts/${postId}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const { success, error } = await response.json();
+
+      if (success) {
+        setError(null);
+        posts = posts.filter((post) => post._id !== postId);
+        updateMe();
+      } else {
+        setError(error);
+      }
+    } catch (ex) {
+      console.error(ex);
+    }
+  };
+
+  if (!posts) return {};
+
+  return {
+    error,
+    posts,
+    selectedPost,
+    setSelectedPost,
+    removePost,
+  };
+}
